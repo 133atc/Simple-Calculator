@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Calculator</title>
+ <link rel="stylesheet" href="design.css">
+
+</head>
+<body>
+  <main class="calculator" role="application" aria-label="Simple calculator">
+   
+    <div id="display" class="display" aria-live="polite">0</div>
+
+    
+    <div class="keys" id="keys">
+      <button type="button" class="danger" data-action="clear">AC</button>
+      <button type="button" data-action="digit" data-digit="7">7</button>
+      <button type="button" data-action="digit" data-digit="8">8</button>
+      <button type="button" data-action="digit" data-digit="9">9</button>
+
+      <button type="button" class="op" data-action="operator" data-operator="divide">÷</button>
+      <button type="button" data-action="digit" data-digit="4">4</button>
+      <button type="button" data-action="digit" data-digit="5">5</button>
+      <button type="button" data-action="digit" data-digit="6">6</button>
+
+      <button type="button" class="op" data-action="operator" data-operator="multiply">×</button>
+      <button type="button" data-action="digit" data-digit="1">1</button>
+      <button type="button" data-action="digit" data-digit="2">2</button>
+      <button type="button" data-action="digit" data-digit="3">3</button>
+
+      <button type="button" class="op" data-action="operator" data-operator="subtract">−</button>
+      <button type="button" class="span-2" data-action="digit" data-digit="0">0</button>
+      <button type="button" data-action="decimal" data-digit=".">.</button>
+
+      <button type="button" class="op" data-action="operator" data-operator="add">+</button>
+      <button type="button" class="span-2 op" data-action="equal">=</button>
+    </div>
+  </main>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

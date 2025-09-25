@@ -1,0 +1,130 @@
+ :root {
+  /* Design tokens: easy theming + consistent spacing/colors */
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --key: #f1f5f9;
+  --key-hover: #e2e8f0;
+
+  --op: #e9eefc;
+  --op-hover: #dbe6ff;
+
+  --danger: #ffeaea;
+  --danger-hover: #ffd6d6;
+
+  --accent: #2563eb;           /* primary accent */
+  --accent-contrast: #ffffff;  /* text on accent */
+
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --radius: 16px;
+}
+
+[data-theme="dark"] {
+  /* Optional dark theme: toggle by adding data-theme="dark" on <body> */
+  --bg: #0b1220;
+  --card: #0f172a;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+
+  --key: #1e293b;
+  --key-hover: #243447;
+
+  --op: #1b2a4a;
+  --op-hover: #25385d;
+
+  --danger: #3b1d1d;
+  --danger-hover: #4a2323;
+
+  --accent: #60a5fa;
+  --accent-contrast: #0b1220;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+:root { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+
+body {
+  min-height: 100svh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(37,99,235,.12), transparent 60%),
+    radial-gradient(1200px 600px at 120% 110%, rgba(99,102,241,.10), transparent 60%),
+    var(--bg);
+}
+
+.calculator {
+  width: min(360px, 92vw);
+  background: var(--card);
+  color: var(--text);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.display {
+  padding: 22px 18px;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  text-align: right;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  font-variant-numeric: tabular-nums; /* why: stable digit widths prevent “jitter” */
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 14px;
+}
+
+.keys button {
+  padding: 16px 12px;
+  font-size: 1.1rem;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 12px;
+  background: var(--key);
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 1px 0 rgba(0,0,0,.05);
+}
+
+.keys button:hover { background: var(--key-hover); }
+.keys button:active { transform: translateY(1px) scale(0.99); }
+.keys button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  outline-offset: 2px;
+}
+
+.span-2 { grid-column: span 2; }
+
+/* Operators get brand tint */
+.keys [data-action="operator"] {
+  background: var(--op);
+  border-color: rgba(37,99,235,.15);
+}
+.keys [data-action="operator"]:hover { background: var(--op-hover); }
+
+/* Equals is primary call-to-action */
+.keys [data-action="equal"] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: transparent;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.keys [data-action="equal"]:hover {
+  filter: brightness(1.05);
+}
+.keys [data-action="equal"]:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* AC as “destructive” action */
+.keys .danger { background: var(--danger); }
+.keys .danger:hover { background: var(--danger-hover); }
